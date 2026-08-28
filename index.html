@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fire Quiz — révise les notions JSP un peu chaque jour." />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Fire Quiz — Révisions JSP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+    <header class="site-header"><a class="brand" href="#accueil" aria-label="Fire Quiz, accueil"><span class="brand-mark">F</span><span>Fire <b>Quiz</b></span></a><nav><a href="#fonctionnement">Le principe</a><a href="#revision">Réviser</a><a href="#tarifs">Tarifs</a></nav><div class="header-actions"><button class="theme-toggle" id="themeToggle" aria-label="Activer le mode sombre" title="Changer de thème"><span class="theme-icon">☾</span></button><a class="button button-ghost" href="/auth.html" id="accountButton">Connexion</a></div></header>
+
+    <main id="accueil">
+      <section class="hero">
+        <div class="hero-copy"><p class="eyebrow">POUR LES JEUNES SAPEURS-POMPIERS</p><h1>Comprendre. Réviser.<br /><em>Être prêt.</em></h1><p class="lead">Des révisions courtes, des explications claires et un coach dédié aux notions JSP. Un peu chaque jour, beaucoup plus serein le jour J.</p><div class="hero-actions"><a class="button button-primary" href="#revision">Commencer ma révision <span>→</span></a><a class="button button-text" href="#fonctionnement">Voir comment ça marche</a></div><p class="mini-note">Gratuit pour démarrer · Sans publicité · 5 minutes par jour</p></div>
+        <div class="hero-card"><div class="card-top"><span class="status-dot"></span><span>Ta séance du jour</span><span class="duration">5 min</span></div><div class="progress-ring"><span>72<small>%</small></span></div><p class="card-title">Tu avances bien.</p><p class="card-copy">6 cartes à revoir pour consolider le matériel incendie.</p><button class="button button-primary button-full" data-scroll="revision">Lancer la séance</button><div class="streak"><span>⚡</span><b id="streakValue">3 jours</b><span>de régularité</span></div></div>
+      </section>
+
+      <section class="principle" id="fonctionnement"><p class="eyebrow">UNE MÉTHODE SIMPLE</p><h2>La bonne notion, au bon moment.</h2><div class="principle-grid"><article><span class="step">01</span><h3>Réponds</h3><p>Des quiz très courts par thème et par niveau, sans te noyer dans les cours.</p></article><article><span class="step">02</span><h3>Comprends</h3><p>Une explication utile après chaque erreur, puis un coach pour aller plus loin.</p></article><article><span class="step">03</span><h3>Retiens</h3><p>Les notions fragiles reviennent au bon moment jusqu’à ce qu’elles soient acquises.</p></article></div></section>
+
+      <section class="revision-shell" id="revision"><div class="section-heading"><div><p class="eyebrow">ESPACE DE RÉVISION</p><h2>Bonjour, futur volontaire.</h2><p>Choisis une mission ou laisse-nous préparer ta séance.</p></div><div class="weekly"><span>Cette semaine</span><b id="weeklyCount">18</b><small>cartes travaillées</small></div></div>
+        <div class="revision-layout"><aside class="topics"><button class="topic active" data-topic="all"><span>✦</span><span>Toute ma séance</span><b id="dueCount">6</b></button><button class="topic" data-topic="incendie"><span>🔥</span><span>Incendie</span></button><button class="topic" data-topic="secours"><span>✚</span><span>Secours à personne</span></button><button class="topic" data-topic="materiel"><span>◈</span><span>Matériel</span></button><button class="topic" data-topic="organisation"><span>⌘</span><span>Organisation</span></button><div class="topics-bottom"><span class="small-label">TON NIVEAU</span><b>JSP 1</b><div class="level-bar"><i></i></div><small>72% des bases acquises</small></div></aside>
+          <section class="quiz-panel" aria-live="polite"><div id="quizIntro"><span class="quiz-kicker">SÉANCE PERSONNALISÉE</span><h3>Prêt pour 6 cartes utiles ?</h3><p>On commence par les notions que tu dois revoir aujourd’hui.</p><div class="session-list"><span>✓ 4 cartes à consolider</span><span>✓ 2 nouvelles questions</span><span>✓ Environ 5 minutes</span></div><button class="button button-primary" id="startQuiz">Démarrer <span>→</span></button></div><div id="quizArea" hidden><div class="quiz-meta"><span id="questionPosition">Question 1 sur 6</span><div class="thin-progress"><i id="quizProgress"></i></div><button class="icon-button" id="quitQuiz" aria-label="Quitter le quiz">×</button></div><span class="quiz-kicker" id="questionTopic">MATÉRIEL</span><h3 id="questionText"></h3><div id="answers" class="answers"></div><div id="feedback" class="feedback" hidden></div><button id="nextQuestion" class="button button-primary" hidden>Continuer <span>→</span></button></div></section>
+          <aside class="coach"><div class="coach-header"><span class="coach-avatar">✦</span><div><b>Coach Mémo</b><small><i></i> Basé sur tes fiches</small></div></div><div class="coach-chat" id="coachChat"><div class="chat-bubble bot">Salut ! Je peux t’expliquer une notion, te poser une question ou t’aider à préparer ton contrôle.</div></div><div class="quick-prompts"><button data-prompt="Explique-moi simplement le matériel incendie">Expliquer une notion</button><button data-prompt="Pose-moi une question facile">M’interroger</button><button data-prompt="Prépare-moi une révision de 5 minutes">Plan de 5 min</button></div><form id="coachForm"><label class="sr-only" for="coachInput">Question au coach</label><input id="coachInput" maxlength="180" placeholder="Pose une question…" /><button aria-label="Envoyer" type="submit">↑</button></form><p class="coach-warning">Outil de révision théorique. Les consignes de ton encadrement restent prioritaires.</p></aside>
+        </div></section>
+
+      <section class="proof"><div><span class="proof-number">5 min</span><p>par jour pour garder le rythme</p></div><div><span class="proof-number">100%</span><p>de contenus à relire et valider</p></div><div><span class="proof-number">0</span><p>classement ou profil public</p></div></section>
+
+      <section class="pricing" id="tarifs"><p class="eyebrow">COMMENCE SANS RISQUE</p><h2>La révision qui suit ton rythme.</h2><div class="price-grid"><article class="price-card"><h3>Découverte</h3><p class="price">0 €<small>/ toujours</small></p><p>Pour essayer la méthode.</p><ul><li>15 questions de découverte</li><li>1 séance par jour</li><li>Progression essentielle</li></ul><button class="button button-outline" id="freeButton">Créer mon espace</button></article><article class="price-card featured"><span class="popular">LE PLUS UTILE</span><h3>JSP Premium</h3><p class="price">3,99 €<small>/ mois</small></p><p>Pour réviser avec régularité.</p><ul><li>Tous les thèmes disponibles</li><li>Révisions personnalisées</li><li>Coach Mémo dédié</li><li>Contrôles blancs</li></ul><button class="button button-primary" id="premiumButton">Essayer Premium</button></article></div><p class="legal-note">L’abonnement sera proposé à un parent ou responsable légal. Annulable à tout moment.</p></section>
+    </main>
+    <footer><a class="brand" href="#accueil"><span class="brand-mark">F</span><span>Fire <b>Quiz</b></span></a><p>Outil de révision théorique indépendant. Il ne remplace pas la formation pratique ni les consignes des animateurs JSP.</p><span>© <span id="year"></span> Fire Quiz</span></footer>
+    <div class="modal-backdrop" id="modal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="closeModal" aria-label="Fermer">×</button><span class="modal-icon" id="modalIcon">✦</span><h2 id="modalTitle">Bienvenue !</h2><p id="modalText"></p><button class="button button-primary button-full" id="modalAction">Go !</button></div></div>
+    <script src="app.js"></script>
+    <script src="theme.js"></script>
+    <script src="account.js"></script>
+  </body>
+</html>

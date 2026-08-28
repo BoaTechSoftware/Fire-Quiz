@@ -1,0 +1,19 @@
+{
+  "name": "interviewe-moi-sur-mes-hobbies-mes",
+  "version": "1.0.0",
+  "description": "Application web de révision JSP, conçue pour commencer gratuitement puis évoluer vers un abonnement parent/section.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "create-admin": "node create-admin.js",
+    "export-training": "node training/export-dataset.js",
+    "test": "node --check server.js && node --check app.js && node --check admin.js && node --check auth.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0"
+  }
+}
